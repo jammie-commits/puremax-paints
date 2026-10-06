@@ -32,3 +32,18 @@ Use `npm run typecheck` and `npm run build` to validate the site.
 ## SEO
 
 The App Router metadata, page-specific titles/descriptions, Open Graph fields, product/article JSON-LD, `sitemap.xml` and `robots.txt` are included. Set a real canonical site URL, then verify properties in Google Search Console and confirm all business information before launch. LocalBusiness schema is intentionally omitted until a verified address and contact information are available.
+
+## Hosting on HostPinnacle (cPanel shared hosting)
+
+The site is a fully static export (`output: "export"`), so it needs no Node.js on the server.
+
+1. Set your real domain, then build:
+   ```bash
+   NEXT_PUBLIC_SITE_URL=https://your-domain.co.ke npm run build
+   ```
+   This creates the `out/` folder (includes `.htaccess` for HTTPS redirect, caching and 404 page).
+2. In cPanel → **File Manager** → `public_html`, upload the **contents** of `out/` (zip it, upload, extract; enable "Show hidden files" so `.htaccess` is included).
+3. In cPanel → **SSL/TLS Status**, run AutoSSL so the HTTPS redirect works.
+4. Submit `https://your-domain.co.ke/sitemap.xml` in Google Search Console.
+
+Rebuild and re-upload `out/` whenever content changes.
