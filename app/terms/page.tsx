@@ -11,7 +11,7 @@ export default function TermsPage() {
       <h2>Website information</h2><p>Product information on this site is provided as a general introduction. Prices, availability and detailed specifications are not published unless explicitly confirmed. Contact Puremax for current information before ordering or applying a product.</p>
       <h2>Enquiry links</h2><p>Enquiry forms may prepare a message for WhatsApp when a business number is configured. The visitor chooses whether to open and send the message. The site does not confirm an order, quote or product availability.</p>
       <h2>Project and customer content</h2><p>Project photographs and customer statements may only be published after the appropriate facts and permissions have been confirmed.</p>
-      <h2>Contact</h2><p>For questions about these terms, contact Puremax at [Email Address].</p>
+      <h2>Contact</h2><p>For questions about these terms, contact Puremax at +254 721 177 035.</p>
     </div></section>
   );
 }

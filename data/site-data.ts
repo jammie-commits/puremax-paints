@@ -5,14 +5,13 @@ export const siteConfig = {
   description:
     "Discover Puremax Paints Industries Limited — quality paint solutions for homes, businesses and projects in Kenya. Explore our products, projects and paint solutions.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  phone: "[Telephone Number]",
-  email: "[Email Address]",
-  address: "[Physical Address]",
-  openingHours: "[Opening Hours]",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  phone: "+254 721 177 035",
+  address: "Ruiru Bypass, opposite Nexus Gym, immediately after you come down the overpass",
+  openingHours: "Monday – Saturday, 8:00 am – 5:00 pm",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254721177035",
   social: {
-    facebook: "",
-    instagram: "",
+    facebook: "https://www.facebook.com/search/top?q=Puremax%20Paints%20Industries%20Limited",
+    instagram: "https://www.instagram.com/explore/search/keyword/?q=Puremax%20Paints%20Industries%20Limited",
     tiktok: "",
     x: "",
     linkedin: "",
@@ -33,56 +32,108 @@ export type Product = {
   sku: string | null;
   availability: "available" | "out-of-stock" | "contact";
   imageAlt: string;
+  image: string;
+  mockupImage?: string;
+  labelImage: string;
+  uses: string;
+  features: string[];
+  application: string[];
 };
+
+const packFeatures = [
+  "Smooth finish",
+  "Washable",
+  "Suitable for interior and exterior surfaces",
+  "Low odour",
+  "15-year life expectancy (as printed on the pack)",
+  "Extreme weather and UV resistant",
+  "Waterproof and breathable finish",
+  "Anti-fungal and anti-mould shield",
+];
+
+const commonApplication = [
+  "Make sure the surface is clean, dry, sound and free from dust, grease, loose paint and efflorescence.",
+  "Repair cracks and holes and allow repairs to cure fully before painting.",
+  "Stir the product thoroughly before use. Do not dilute unless the pack label says so.",
+];
 
 export const products: Product[] = [
   {
     slug: "wall-master",
     name: "Wall Master",
-    shortDescription: "Designer texture finish",
+    shortDescription: "Premium textured finish for interior and exterior walls",
     description:
-      "A designer texture finish from the Puremax range. Ask the Puremax team about the available options and guidance for your project.",
+      "Wall Master is a premium textured wall finish from Puremax. Its designer texture lets applicators create custom wall patterns, and it is available in Normal, Fine and Stoneless variants for different looks.",
     packSize: "30 KG",
     variants: ["Normal", "Fine", "Stoneless"],
-    finish: "Designer texture",
+    finish: "Premium textured finish",
     price: null,
     previousPrice: null,
     promotionalPrice: null,
     sku: null,
     availability: "contact",
-    imageAlt: "Illustrated Wall Master product pack placeholder",
+    imageAlt: "Puremax Wall Master 30 KG premium textured finish pack",
+    image: "/products/wall-master-front.jpg",
+    mockupImage: "/products/wall-master-bucket.jpg",
+    labelImage: "/paint/paint-5.jpeg",
+    uses: "Interior and exterior walls where a designed, textured look is wanted.",
+    features: ["Designer texture for custom-crafted wall patterns", ...packFeatures],
+    application: [
+      ...commonApplication,
+      "Apply with a stainless steel trowel and work the texture pattern while the material is workable.",
+      "Allow the finish to dry fully before handling or recoating.",
+    ],
   },
   {
     slug: "silk-vinyl",
     name: "Silk Vinyl",
     shortDescription: "Smooth, washable interior gloss finish",
     description:
-      "An interior gloss finish described in the supplied product information as smooth and washable. Contact Puremax for current product guidance and availability.",
+      "Silk Vinyl is a smooth interior gloss finish from Puremax. It is washable and low odour, making it a practical choice for living areas, bedrooms and offices.",
     packSize: "20 Ltr",
     variants: [],
-    finish: "Interior gloss",
+    finish: "Interior gloss finish",
     price: null,
     previousPrice: null,
     promotionalPrice: null,
     sku: null,
     availability: "contact",
-    imageAlt: "Illustrated Silk Vinyl product pack placeholder",
+    imageAlt: "Puremax Silk Vinyl 20 litre interior gloss finish bucket",
+    image: "/products/silk-vinyl-front.jpg",
+    mockupImage: "/products/silk-vinyl-bucket.jpg",
+    labelImage: "/paint/paint-4.jpeg",
+    uses: "Interior walls and ceilings in homes, offices and commercial spaces.",
+    features: packFeatures,
+    application: [
+      ...commonApplication,
+      "Apply over a suitable undercoat using a good-quality brush, roller or spray.",
+      "Apply two coats, allowing the first coat to dry before applying the second.",
+    ],
   },
   {
     slug: "under-coat",
     name: "Under Coat",
-    shortDescription: "Premium finish primer / undercoat",
+    shortDescription: "Premium finish primer and undercoat",
     description:
-      "A primer and undercoat option in the Puremax range. Contact Puremax for product information and advice on suitability for your project.",
+      "Under Coat is a premium primer and undercoat from Puremax. It prepares walls for the final finish, helping create an even base before topcoats such as Silk Vinyl are applied.",
     packSize: "20 Ltr",
     variants: [],
-    finish: "Primer / undercoat",
+    finish: "Premium primer / undercoat",
     price: null,
     previousPrice: null,
     promotionalPrice: null,
     sku: null,
     availability: "contact",
-    imageAlt: "Illustrated Under Coat product pack placeholder",
+    imageAlt: "Puremax Under Coat 20 litre premium finish pack",
+    image: "/products/under-coat-front.jpg",
+    labelImage: "/paint/paint-3.jpeg",
+    uses: "A base coat on new or previously painted interior and exterior walls before the final finish.",
+    features: packFeatures,
+    application: [
+      ...commonApplication,
+      "Apply one to two coats with a brush or roller, depending on the surface and porosity.",
+      "Allow to dry fully, then apply the chosen finish coat.",
+    ],
   },
 ];
 
@@ -99,7 +150,110 @@ export type Project = {
   testimonial: string | null;
 };
 
-export const projects: Project[] = [];
+const asset = (file: string) => `/assets/${encodeURIComponent(file)}`;
+const img = (time: string, suffix = "") => asset(`WhatsApp Image ${time}${suffix}.jpeg`);
+
+export const projectVideo = {
+  src: asset("WhatsApp Video 2026-09-15 at 21.31.13.mp4"),
+  poster: "/products/video-poster.jpg",
+  title: "Finishing work on site",
+};
+
+export const stockPhoto = img("2026-09-15 at 21.57.21");
+
+export const projects: Project[] = [
+  {
+    slug: "bungalow-exterior-repaint",
+    title: "Bungalow exterior repaint",
+    location: "Kenya",
+    category: "Residential",
+    description:
+      "A single-storey home refreshed with a new exterior colour scheme. Use the slider to compare the home before and after the new colours were applied.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.31.20")],
+    beforeImage: img("2026-09-15 at 21.31.13"),
+    afterImage: img("2026-09-15 at 21.31.20"),
+    testimonial: null,
+  },
+  {
+    slug: "apartment-block-exterior",
+    title: "Apartment block exterior finish",
+    location: "Kenya",
+    category: "Apartments",
+    description:
+      "A multi-storey apartment block taken from bare plaster to a warm, even exterior finish. Use the slider to compare the building before and after painting.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.31.22")],
+    beforeImage: img("2026-09-15 at 21.31.23"),
+    afterImage: img("2026-09-15 at 21.31.22"),
+    testimonial: null,
+  },
+  {
+    slug: "hipped-roof-home",
+    title: "Hipped-roof family home",
+    location: "Kenya",
+    category: "Residential",
+    description:
+      "A new-build family home with a covered veranda, shown during construction and again once the clean white finish was complete.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.31.25")],
+    beforeImage: img("2026-09-15 at 21.31.24"),
+    afterImage: img("2026-09-15 at 21.31.25"),
+    testimonial: null,
+  },
+  {
+    slug: "two-storey-maisonette",
+    title: "Two-storey maisonette",
+    location: "Kenya",
+    category: "Residential",
+    description:
+      "A two-storey home with a rounded balcony, shown during preparation and after the final exterior colours were applied.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.31.29")],
+    beforeImage: img("2026-09-15 at 21.37.55"),
+    afterImage: img("2026-09-15 at 21.31.29"),
+    testimonial: null,
+  },
+  {
+    slug: "arched-window-residence",
+    title: "Arched-window residence",
+    location: "Kenya",
+    category: "Residential",
+    description:
+      "A white-painted two-storey residence with arched windows and a wrap-around balcony, finished with a crisp, clean exterior look.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.31.27")],
+    testimonial: null,
+  },
+  {
+    slug: "multi-storey-finishing",
+    title: "Multi-storey finishing work",
+    location: "Kenya",
+    category: "Apartments",
+    description:
+      "Exterior construction and finishing in progress on multi-storey residential buildings, with scaffolding in place for access to every elevation.",
+    productsUsed: [],
+    images: [
+      img("2026-09-15 at 21.31.26"),
+      img("2026-09-15 at 21.51.04"),
+      img("2026-09-15 at 21.51.05", " (1)"),
+      img("2026-09-15 at 21.53.43"),
+    ],
+    testimonial: null,
+  },
+  {
+    slug: "textured-finish-application",
+    title: "Textured finish application",
+    location: "Kenya",
+    category: "Texture",
+    description:
+      "An applicator working a textured wall finish by hand on a site wall, showing the detail that a designed texture can bring.",
+    productsUsed: [],
+    images: [img("2026-09-15 at 21.51.05")],
+    testimonial: null,
+  },
+];
+
 export const dealers: {
   name: string;
   town: string;
@@ -144,7 +298,7 @@ export const articles: Article[] = [
         heading: "Choose products for the job",
         paragraphs: [
           "Different surfaces and locations may call for different preparation products and finishes. Check the current technical information for the product you plan to use, and ask the supplier if the right system is not clear.",
-          "Puremax product prices and detailed application specifications are not published here yet. Contact the team for current information before purchasing.",
+          "Each Puremax product page lists typical application steps. Contact the team for current prices and availability before purchasing.",
         ],
       },
     ],
@@ -167,7 +321,7 @@ export const articles: Article[] = [
         heading: "Check the product information",
         paragraphs: [
           "Finish names alone do not provide every application detail. Review the current product label or technical sheet for approved surfaces, preparation, application and care guidance.",
-          "Silk Vinyl is described in the supplied Puremax product information as a smooth and washable interior gloss finish. Ask Puremax for its current product details and availability.",
+          "Silk Vinyl is a smooth, washable interior gloss finish, and Under Coat is a premium primer for preparing the wall first. Ask Puremax for current product details and availability.",
         ],
       },
     ],
@@ -206,27 +360,32 @@ export const faqs = [
   {
     question: "How can I get the current price of a Puremax product?",
     answer:
-      "Prices are not yet supplied for this website. Use the enquiry form or WhatsApp link to request the current price and availability.",
+      "Prices vary with pack size, colour and location, so we confirm them on request. Use the enquiry form or WhatsApp link to get the current price and availability.",
   },
   {
     question: "Where can I buy Puremax Paints?",
     answer:
-      "The stockist directory is ready for verified dealer information, but no dealer locations have been provided yet. Contact Puremax to ask about a stockist near you.",
+      "Contact Puremax with your town or county and we will point you to the nearest stockist. A stockist directory will be added to this site as dealers are confirmed.",
   },
   {
     question: "What sizes are available?",
     answer:
-      "The supplied information lists Wall Master in 30 KG, Silk Vinyl in 20 Ltr and Under Coat in 20 Ltr. Confirm current availability with Puremax.",
+      "Wall Master comes in 30 KG packs, while Silk Vinyl and Under Coat come in 20 Ltr buckets. Confirm current availability with Puremax.",
   },
   {
     question: "What variants does Wall Master come in?",
     answer:
-      "The supplied product information lists Normal, Fine and Stoneless variants. Ask Puremax to confirm current stock and product guidance.",
+      "Wall Master comes in Normal, Fine and Stoneless variants, giving different texture looks. Ask Puremax to confirm current stock and which suits your wall.",
   },
   {
     question: "Where can I find application instructions?",
     answer:
-      "Detailed technical sheets have not been supplied for this website. Request the latest product information from Puremax before starting a project.",
+      "Each product page lists typical application steps. Always follow the label on the pack, and request the latest product information from Puremax before starting a project.",
+  },
+  {
+    question: "Are Puremax paints approved by KEBS?",
+    answer:
+      "Yes. The Puremax products shown on this website, Wall Master, Silk Vinyl and Under Coat, are the products approved by the Kenya Bureau of Standards (KEBS). Only approved products are listed.",
   },
   {
     question: "Can I request a quote for a project?",

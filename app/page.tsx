@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { articles, products, siteConfig } from "@/data/site-data";
+import { articles, products, projects, siteConfig } from "@/data/site-data";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -10,6 +11,9 @@ const organizationJsonLd = {
   slogan: siteConfig.tagline,
   url: siteConfig.siteUrl,
   description: siteConfig.description,
+  telephone: siteConfig.phone,
+  openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "08:00", closes: "17:00" },
+  address: { "@type": "PostalAddress", streetAddress: "Ruiru Bypass, opposite Nexus Gym", addressLocality: "Ruiru", addressCountry: "KE" },
 };
 
 export default function HomePage() {
@@ -31,13 +35,8 @@ export default function HomePage() {
             <Link className="hero-text-link" href="/products">Explore products <span aria-hidden="true">↓</span></Link>
             <div className="hero-footnote"><span className="hero-dot" /> Colouring your world, one finish at a time.</div>
           </div>
-          <div className="hero-art" aria-label="Abstract paint and architecture illustration; replace with approved Puremax photography">
-            <div className="hero-art-ring" />
-            <div className="hero-arch arch-back" />
-            <div className="hero-arch arch-front" />
-            <div className="hero-paint-swipe swipe-gold" />
-            <div className="hero-paint-swipe swipe-cyan" />
-            <div className="hero-image-note"><span>01 / VISUAL PLACEHOLDER</span><small>Replace with approved Puremax project photography</small></div>
+          <div className="hero-art hero-art-photo">
+            <Image src={projects[2].afterImage ?? projects[2].images[0]} alt="Home finished with Puremax paint" fill priority sizes="(max-width: 900px) 100vw, 45vw" />
             <div className="hero-art-label"><span>PUREMAX</span><span>Colouring Your World</span></div>
           </div>
         </div>
@@ -86,7 +85,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-heading section-heading-row">
             <div><span className="eyebrow">THE PRODUCT RANGE</span><h2>Find your <em>finish.</em></h2></div>
-            <p>Explore the Puremax products currently represented on this site. Need a specification, price or stock update? Get in touch.</p>
+            <p>Explore the KEBS-approved Puremax products. Need a price or stock update? Get in touch.</p>
           </div>
           <div className="product-grid">
             {products.map((product, index) => <ProductCard key={product.slug} product={product} index={index} />)}
@@ -117,12 +116,15 @@ export default function HomePage() {
             <span className="eyebrow">PUREMAX IN THE WORLD</span>
             <h2>Real projects.<br /><em>Real colour.</em></h2>
           </div>
-          <div className="project-empty-visual">
-            <div className="project-empty-lines"><span /><span /><span /></div>
-            <div className="project-empty-copy"><span>PROJECT GALLERY</span><strong>Coming soon</strong><small>Project photos and details will appear here when approved content is available.</small></div>
+          <div className="project-teaser-grid">
+            {projects.slice(0, 3).map((project) => (
+              <Link className="project-teaser-item" href={`/projects/${project.slug}`} key={project.slug}>
+                <Image src={project.afterImage ?? project.images[0]} alt={project.title} fill sizes="(max-width: 760px) 100vw, 33vw" />
+                <span>{project.title}</span>
+              </Link>
+            ))}
           </div>
-          <p className="project-teaser-foot">We don’t publish project or customer claims without verified details and permission.</p>
-          <Link className="text-link" href="/projects">Visit project gallery <span aria-hidden="true">↗</span></Link>
+          <Link className="text-link" href="/projects">View all projects <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 

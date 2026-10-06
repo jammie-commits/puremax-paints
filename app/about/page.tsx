@@ -45,7 +45,7 @@ export default function AboutPage() {
         <div className="container story-grid">
           <div><span className="eyebrow">BUILT FOR KENYA</span><h2>Made for the<br /><em>places we call home.</em></h2></div>
           <div className="story-copy">
-            <p>The supplied Puremax brand story reflects on the conditions Kenyan homes and buildings may experience — sun, rain, dust and humidity — and the importance of choosing appropriate finishes.</p>
+            <p>Kenyan homes and buildings face strong sun, heavy rain, dust and humidity, so the right finish matters. Puremax products are made to protect walls and keep them looking good, and every product we list is approved by KEBS.</p>
             <p>Different buildings and surfaces have different requirements. Ask for current product information before making a specification or application decision.</p>
             <Link className="text-link" href="/products">Explore the product range <span aria-hidden="true">↗</span></Link>
           </div>

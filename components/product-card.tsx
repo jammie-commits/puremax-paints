@@ -1,23 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/data/site-data";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 
-export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
-  const colors = ["can-blue", "can-gold", "can-charcoal"];
+export function ProductCard({ product }: { product: Product; index?: number }) {
   return (
     <article className="product-card">
-      <Link className={`product-art ${colors[index % colors.length]}`} href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
-        <span className="art-caption">PUREMAX PAINTS</span>
-        <span className="paint-can" aria-hidden="true">
-          <span className="can-lid" />
-          <span className="can-label">
-            <span className="can-brand">PUREMAX</span>
-            <span className="can-product">{product.name}</span>
-            <span className="can-tagline">COLOURING YOUR WORLD</span>
-          </span>
-          <span className="can-size">{product.packSize}</span>
-        </span>
-        <span className="art-placeholder-note">Illustrative pack · artwork placeholder</span>
+      <Link className="product-art product-art-photo" href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
+        <Image src={product.image} alt={product.imageAlt} fill sizes="(max-width: 760px) 100vw, 33vw" />
+        <span className="kebs-badge">KEBS approved</span>
       </Link>
       <div className="product-card-body">
         <div className="product-eyebrow">{product.finish}</div>

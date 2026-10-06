@@ -26,7 +26,7 @@ export default function ProductsPage() {
           </div>
           <div className="notice-box">
             <span className="notice-icon" aria-hidden="true">i</span>
-            <p>Prices, availability and detailed technical specifications have not been provided for publication. Contact Puremax to confirm current information before purchase or application.</p>
+            <p>Every product listed here is approved by the Kenya Bureau of Standards (KEBS). Contact Puremax to confirm current prices and availability.</p>
           </div>
         </div>
       </section>

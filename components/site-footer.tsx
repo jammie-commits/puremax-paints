@@ -49,8 +49,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-column footer-contact">
           <h2>Get in touch</h2>
-          <p>{siteConfig.phone}</p>
-          <p>{siteConfig.email}</p>
+          <p><a href={`tel:+${siteConfig.whatsappNumber}`}>{siteConfig.phone}</a></p>
           <p>{siteConfig.address}</p>
           <p>{siteConfig.openingHours}</p>
           <Link className="footer-contact-link" href="/contact">Contact Puremax <span aria-hidden="true">↗</span></Link>

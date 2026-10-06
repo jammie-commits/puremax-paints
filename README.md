@@ -1,6 +1,6 @@
 # Puremax Paints website
 
-Responsive Next.js starter for Puremax Paints Industries Limited. It uses verified product details from the supplied brief and leaves unprovided company details as explicit placeholders. The Puremax logo mark was rendered from the supplied `PDF.pdf`; the source is preserved at `public/puremax-logo.pdf`, with a web-sized, transparent PNG at `public/puremax-logo-transparent.png`. Product and project imagery elsewhere remains illustrative placeholder artwork.
+Responsive Next.js starter for Puremax Paints Industries Limited. It uses verified product details from the supplied brief and leaves unprovided company details as explicit placeholders. The Puremax logo mark was rendered from the supplied `PDF.pdf`; the source is preserved at `public/puremax-logo.pdf`, with a web-sized, transparent PNG at `public/puremax-logo-transparent.png`. Product imagery comes from `public/paint/` (pack artwork, with front-label and bucket crops in `public/products/`), and project photos and the site video come from `public/assets/`. Only the KEBS-approved products (Wall Master, Silk Vinyl, Under Coat) are listed.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ Use `npm run typecheck` and `npm run build` to validate the site.
 ## Business content and setup
 
 - Edit products, articles, FAQs, dealers, social links and visible contact placeholders in `data/site-data.ts`.
-- Add only verified projects to the `projects` collection. The project and dealer pages intentionally show empty states until verified records are entered.
+- Projects are defined in `data/site-data.ts` and use photos from `public/assets/`. Locations are generic ("Kenya"), and no products, testimonials or client names are claimed. Add real details there when available. The dealer page shows an empty state until verified dealers are entered.
 - Set `NEXT_PUBLIC_SITE_URL` to the canonical HTTPS production origin before deployment.
 - Set `NEXT_PUBLIC_WHATSAPP_NUMBER` to the approved international-format digits only (no `+`). Forms and WhatsApp links remain visibly unconfigured until then. The forms prepare a message and do not store or submit personal data on this site.
 - Product prices are `null` by default and render as “Contact us for current price”. Add a verified price to the product data only after approval.

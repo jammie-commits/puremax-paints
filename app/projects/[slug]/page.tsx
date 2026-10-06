@@ -32,7 +32,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         <span className="eyebrow">{project.category} · {project.location}</span>
         <h1>{project.title}</h1>
         <p>{project.description}</p>
-        {project.images.length > 0 && <div className="project-detail-images">{project.images.map((image) => <div className="project-detail-image" key={image}><Image src={image} alt={`${project.title} project view`} fill sizes="(max-width: 760px) 100vw, 50vw" /></div>)}</div>}
+        {project.images.length > 0 && !(project.beforeImage && project.afterImage) && <div className="project-detail-images">{project.images.map((image) => <div className="project-detail-image" key={image}><Image src={image} alt={`${project.title} project view`} fill sizes="(max-width: 760px) 100vw, 50vw" /></div>)}</div>}
         {project.beforeImage && project.afterImage && <BeforeAfterSlider beforeSrc={project.beforeImage} afterSrc={project.afterImage} projectName={project.title} />}
         {project.productsUsed.length > 0 && <section className="project-detail-block"><h2>Puremax products used</h2><ul>{project.productsUsed.map((name) => <li key={name}>{name}</li>)}</ul></section>}
         {project.testimonial && <blockquote className="project-testimonial">“{project.testimonial}”</blockquote>}

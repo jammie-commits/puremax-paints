@@ -17,13 +17,12 @@ export default function ContactPage() {
         <span className="page-hero-watermark page-hero-watermark-light">↗</span>
       </section>
       <section className="section" id="contact-options"><div className="container contact-options">
-        <div><span className="eyebrow">CONTACT DETAILS</span><h2>Choose how<br /><em>to reach us.</em></h2><p>Business contact information will be published here once confirmed.</p></div>
+        <div><span className="eyebrow">CONTACT DETAILS</span><h2>Choose how<br /><em>to reach us.</em></h2><p>Call, text or WhatsApp us on the number below, or visit us at our Ruiru Bypass location.</p></div>
         <div className="contact-detail-list">
-          <div><span>Telephone</span><strong>{siteConfig.phone}</strong></div>
-          <div><span>Email</span><strong>{siteConfig.email}</strong></div>
+          <div><span>Call or SMS</span><strong><a href={`tel:+${siteConfig.whatsappNumber}`}>{siteConfig.phone}</a></strong></div>
           <div><span>Address</span><strong>{siteConfig.address}</strong></div>
           <div><span>Opening hours</span><strong>{siteConfig.openingHours}</strong></div>
-          <div><span>WhatsApp</span><strong>{siteConfig.whatsappNumber ? "Configured" : "[WhatsApp Number — configure in environment]"}</strong></div>
+          <div><span>WhatsApp</span><strong>{siteConfig.phone}</strong></div>
           <Link className="text-link" href="/dealers">Find a stockist <span aria-hidden="true">↗</span></Link>
         </div>
       </div></section>
