@@ -401,5 +401,8 @@ export function whatsappUrl(message: string): string | null {
 }
 
 export function absoluteUrl(path: string): string {
-  return new URL(path, siteConfig.siteUrl).toString();
+  const url = new URL(path, siteConfig.siteUrl);
+  // The static export serves pages with a trailing slash.
+  if (!/\.[a-z0-9]+$/i.test(url.pathname) && !url.pathname.endsWith("/")) url.pathname += "/";
+  return url.toString();
 }
