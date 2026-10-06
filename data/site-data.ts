@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Colouring Your World",
   description:
     "Discover Puremax Paints Industries Limited — quality paint solutions for homes, businesses and projects in Kenya. Explore our products, projects and paint solutions.",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://puremaxpaintsltd.co.ke",
   phone: "+254 721 177 035",
   address: "Ruiru Bypass, opposite Nexus Gym, immediately after you come down the overpass",
   openingHours: "Monday – Saturday, 8:00 am – 5:00 pm",
